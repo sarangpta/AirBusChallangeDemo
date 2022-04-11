@@ -1,0 +1,32 @@
+<div class="container">
+	<br> <br> <a href="#" routerLink="/post/create/"
+		class="btn btn-success">Create New Product</a> <a href="#"
+		routerLink="/post/byCategory/" class="btn btn-primary">Search
+		Product based on Category </a> <br> <br>
+
+	<table class="table table-bordered">
+		<tr>
+			<th>ID</th>
+			<th>Name  <p><input type="text" (keyup)="applyFilterName($event.target.value)"
+				placeholder="Search By Name"></p></th>
+			<th>Category <p><input type="text" (keyup)="applyFilterCategory($event.target.value)"
+				placeholder="Search By Category"></p></th>
+			<th width="220px">Description <p><input type="text" (keyup)="applyFilterDescription($event.target.value)"
+				placeholder="Search By Description"></p></th>
+			<th>Units <p><input type="text" (keyup)="applyFilterUnits($event.target.value)"
+				placeholder="Search By Units"></p></th>
+			<th>Actions</th>
+		</tr>
+		<tr *ngFor="let product of posts">
+			<td>{{ product.productId }}</td>
+			<td>{{ product.name }}</td>
+			<td>{{ product.category }}</td>
+			<td>{{ product.description }}</td>
+			<td>{{ product.units }}</td>
+			<td><a href="#" [routerLink]="['/post/','view']"
+				(click)="sendProductData(product)" class="btn btn-info">View</a> <a
+				href="#" [routerLink]="['/post/','edit']"
+				(click)="sendProductData(product)">Edit</a></td>
+		</tr>
+	</table>
+</div>

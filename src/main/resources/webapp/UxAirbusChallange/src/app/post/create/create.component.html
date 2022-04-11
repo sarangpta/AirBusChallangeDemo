@@ -1,0 +1,41 @@
+<div class="container">
+	<h1>Create New Product</h1>
+
+	<a href="#" routerLink="/post/index" class="btn btn-primary">Back</a>
+
+	<form [formGroup]="form" (ngSubmit)="submit()">
+
+		<div class="form-group">
+			<label for="name">Product Name:</label> <input formControlName="name"
+				id="name" type="text" class="form-control">
+			<div *ngIf="f.name.touched && f.name.invalid"
+				class="alert alert-danger">
+				<div *ngIf="f.name.errors?.required">Name is required.</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="category">Category</label> <input
+				formControlName="category" id="category" type="text"
+				class="form-control">
+			<div *ngIf="f.category.touched && f.category.invalid"
+				class="alert alert-danger">
+				<div *ngIf="f.category.errors?.required">Category is required.</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="description">Description</label>
+			<textarea formControlName="description" id="description" type="text"
+				class="form-control">
+            </textarea>
+		</div>
+		<div class="form-group">
+			<label for="units">Units</label> <input formControlName="units"
+				id="units" type="text" class="form-control">
+			<div *ngIf="f.units.touched && f.units.invalid"
+				class="alert alert-danger">
+				<div *ngIf="f.units.errors?.required">Units is required.</div>
+			</div>
+		</div>
+		<button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+	</form>
+</div>
